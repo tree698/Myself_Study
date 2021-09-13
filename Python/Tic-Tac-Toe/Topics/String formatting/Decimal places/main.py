@@ -1,0 +1,5 @@
+a = float(input())
+b = int(input())
+print('{}'.format(round(a, b)))
+print(f'{a: .{b}f}')
+print(f"{float(input()):.{int(input())}f}")
