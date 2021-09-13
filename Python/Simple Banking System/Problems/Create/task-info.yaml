@@ -1,0 +1,17 @@
+type: code
+files:
+- name: main.py
+  visible: true
+  text: |-
+    # create a dict here
+    # and print it
+  learner_created: false
+- name: scopes.py
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/learn/step/9143#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Fri, 19 Mar 2021 06:09:27 UTC
+record: -1
