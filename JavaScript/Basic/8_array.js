@@ -1,99 +1,99 @@
 'use strict';
 
-// /**
-//  * * Array ❤
-//  */
+/**
+ * * Array ❤
+ */
 
-// /**
-//  * Declaration
-//  */
-// const arr1 = new Array();
-// const arr2 = [1, 2];
+/**
+ * Declaration
+ */
+const arr1 = new Array();
+const arr2 = [1, 2];
 
-// /**
-//  * Index position
-//  */
-// const fruits = ['apple', 'banna'];
-// console.log(fruits);
-// console.log(fruits.length);
-// console.log(fruits[0]);
-// console.log(fruits[fruits.length - 1]); // 마지막 원소 출력
+/**
+ * Index position
+ */
+const fruits = ['apple', 'banna'];
+console.log(fruits);
+console.log(fruits.length);
+console.log(fruits[0]);
+console.log(fruits[fruits.length - 1]); // 마지막 원소 출력
 
-// /**
-//  * Looping over an array
-//  * for, for of, forEach
-//  */
-// for (let i = 0; i < fruits.length; i++) {
-// 	console.log(fruits[i]);
-// }
+/**
+ * Looping over an array
+ * for, for of, forEach
+ */
+for (let i = 0; i < fruits.length; i++) {
+	console.log(fruits[i]);
+}
 
-// for (let i of fruits) {
-// 	console.log(i);
-// }
+for (let i of fruits) {
+	console.log(i);
+}
 
-// fruits.forEach(function (value, index, array) {
-// 	console.log(value, index, array);
-// });
+fruits.forEach(function (value, index, array) {
+	console.log(value, index, array);
+});
 
-// fruits.forEach((fruit, index) => console.log(fruit, index));
+fruits.forEach((fruit, index) => console.log(fruit, index));
 
-// /**
-//  * Addition. deletion, copy
-//  * push, pop, unshift, shift
-//  * !note: shift, unshift are slower than pop and push
-//  */
-// fruits.push('straberry', 'peach');
-// console.log(fruits);
+/**
+ * Addition. deletion, copy
+ * push, pop, unshift, shift
+ * !note: shift, unshift are slower than pop and push
+ */
+fruits.push('straberry', 'peach');
+console.log(fruits);
 
-// const poped = fruits.pop(); // pop: remove an item from the end
-// console.log(fruits);
-// console.log(poped);
+const poped = fruits.pop(); // pop: remove an item from the end
+console.log(fruits);
+console.log(poped);
 
-// fruits.unshift('cherry'); // unshift: add an item to the beginning
-// console.log(fruits);
+fruits.unshift('cherry'); // unshift: add an item to the beginning
+console.log(fruits);
 
-// fruits.shift(); // shift: remove an item from the beginning
-// console.log(fruits);
+fruits.shift(); // shift: remove an item from the beginning
+console.log(fruits);
 
-// fruits.push('💖', '🍔', '🍤');
-// console.log(fruits);
+fruits.push('💖', '🍔', '🍤');
+console.log(fruits);
 
-// /**
-//  * splice: remove an item by index position => (시작지점, 삭제 개수)
-//  * 삭제 개수를 명시하지않으면 시작점부터 모두 삭제함
-//  */
-// fruits.splice(1, 1);
-// console.log(fruits);
+/**
+ * splice: remove an item by index position => (시작지점, 삭제 개수)
+ * 삭제 개수를 명시하지않으면 시작점부터 모두 삭제함
+ */
+fruits.splice(1, 1);
+console.log(fruits);
 
-// fruits.splice(1, 1, '🍈', '🍊'); // 삭제와 추가를 동시에 할수 있다
-// console.log(fruits);
+fruits.splice(1, 1, '🍈', '🍊'); // 삭제와 추가를 동시에 할수 있다
+console.log(fruits);
 
-// /**
-//  * concat: combine two arrays
-//  */
-// const tree = ['🌳', '🌴'];
-// const mix = fruits.concat(tree);
-// console.log(mix);
+/**
+ * concat: combine two arrays
+ */
+const tree = ['🌳', '🌴'];
+const mix = fruits.concat(tree);
+console.log(mix);
 
-// /**
-//  * Searching => find the index
-//  * indexOf, includes
-//  */
-// console.clear();
-// console.log(fruits);
-// console.log(fruits.indexOf('🍊'));
+/**
+ * Searching => find the index
+ * indexOf, includes
+ */
+console.clear();
+console.log(fruits);
+console.log(fruits.indexOf('🍊'));
 
-// console.log(fruits.indexOf('c')); // 없을 경우 -1 출력
-// console.log(fruits.includes('c')); // includes => return boolean
+console.log(fruits.indexOf('c')); // 없을 경우 -1 출력
+console.log(fruits.includes('c')); // includes => return boolean
 
-// /**
-//  * 원소가 중복되어 있을 경우
-//  * indexof, lastIndexOf
-//  */
-// fruits.push('🍈');
-// console.log(fruits);
-// console.log(fruits.indexOf('🍈')); //indexof => 앞에 있는 것부터
-// console.log(fruits.lastIndexOf('🍈')); //lastIndexOf=> 뒤에 있는 것부터
+/**
+ * 원소가 중복되어 있을 경우
+ * indexof, lastIndexOf
+ */
+fruits.push('🍈');
+console.log(fruits);
+console.log(fruits.indexOf('🍈')); //indexof => 앞에 있는 것부터
+console.log(fruits.lastIndexOf('🍈')); //lastIndexOf=> 뒤에 있는 것부터
 
 /**
  * * Exercise
