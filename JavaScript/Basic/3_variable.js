@@ -133,4 +133,25 @@ console.log(`value: ${text}, type: ${typeof text}`);
 
 console.log(text.charAt(0));
 
+/**
+ * Variable Copy
+ */
+
+let num = 2;
+let num2 = num;
+
+num2 = 3;
+console.log(num); //2
+console.log(num2); //3
+
+const obj = {
+	name: 'ellie',
+	age: 5,
+};
+const obj2 = obj; // obj와 obj2는 동일 주소를 가짐
+
+obj.name = 'Lee';
+console.log(obj.name); //Lee
+console.log(obj2); //Lee
+
 // (end)
