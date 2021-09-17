@@ -3,11 +3,11 @@
 // 1. String concatenation
 console.log('my' + 'cat');
 console.log('1' + 2);
-console.log(`string literals: 1 +    /* 줄바꿈 가능 */
-2 = ${1 + 2}`);
-console.log("I'm \nstudent"); /* backslash & 줄바꿈 */
+console.log(`string literals: 1 +  
+2 = ${1 + 2}`); //줄바꿈 가능
+console.log("I'm \nstudent"); //backslash n => 줄바꿈
 
-// 2. Numeri operators
+// 2. Numeric operators
 console.log(1 + 1);
 console.log(1 - 1);
 console.log(1 / 1);
@@ -43,8 +43,8 @@ console.log(10 >= 6);
 
 /* 
     6. Logical operators:  || (or), && (and), ! (not)
-        - || (or) => find the first true value => 첫번째 값이 true면 다음은 계산 안함  => 시간 걸리는 함수를 마지막에 위치 
-        - && (and) => find the first falsy value => 첫번째 값이 False면 다음은 계산 안함 => 시간 걸리는 함수를 마지막에 위치 
+        - || (or) => find the first true value => 첫번째 값이 false면 다음 계산 => 시간 걸리는 함수를 마지막에 위치 
+        - && (and) => find the first falsy value => 첫번째 값이 true면 다음 계산 => 시간 걸리는 함수를 마지막에 위치 
 */
 
 const value1 = false;
@@ -67,6 +67,9 @@ console.log(!value1);
 	        nullableObject.something;
         }
 */
+
+let obj; //undefined
+obj && console.log(obj); //obj가 참이면 다음 실행 => undefine(거짓)이므로 실행 안됨
 
 // 7.Equality
 const stringFive = '5';

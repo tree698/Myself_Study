@@ -73,8 +73,8 @@ const helloBob = `hi ${brendan}!`;
 console.log(`value: ${helloBob}, type: ${typeof helloBob}`);
 
 // boolean
-// false: 0, -0, null, false, undefined, NaN, empty string('')
-// true: any other value including object, empty array([]), 'false'
+// false: 0, -0, null, false(boolean), undefined, NaN, empty string('')
+// true: any other value including object, empty array([]), 'false'(문자열)
 const canRead = true;
 const test = 3 < 1;
 console.log(`value: ${canRead}, type: ${typeof canRead}`);
