@@ -1,0 +1,13 @@
+#. Microsoft가 2012년 만듬 => open source project
+
+#. JavaScript + Type = TypeScript
+
+#. JavaScript는 dynamically type으로 runtime 단계에서 type이 결정 => runtime에서 error 학인 가능
+
+#. TypeScript는 statically type으로 compile 단계에서 type이 결정 => compile에서 error  확인 가능 
+
+#. TypeScript는 oop 가능 (class, interface, generic) => 최신 문법 및 적용 가능
+
+#. JavaScript는 ES6에서 class를 도입했으나, prototype 기반으로 사용에 일부 제약
+
+#. TypeScript는 transcompile을 통해 JavaScript가 지원되는 모든 브라우저/환경에서 작동 => client side & server side 
