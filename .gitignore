@@ -1,0 +1,6 @@
+.idea/ 
+_Pycache_ /
+*.yaml 
+course-requirement-info.yaml 
+requirements.txt 
+task-remote-info.yaml 
