@@ -4,3 +4,4 @@ _Pycache_ /
 course-requirement-info.yaml 
 requirements.txt 
 task-remote-info.yaml 
+*.pyc
