@@ -1,1 +1,0 @@
-print([i for i in words if i.startswith(('a', 'A'))])
