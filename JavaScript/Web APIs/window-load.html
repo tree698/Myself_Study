@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=, initial-scale=1.0" />
+		<title>Window Load</title>
+		<script src="window-load-test.js" defer></script>
+	</head>
+	<body>
+		<!-- 
+            ** defer
+            (HTML parsing + js 파일 fetching) 동시에 일어남 => HTML parsing 마무리되면 js 파일 executing됨 => 첫 번째 출력: "js loaded" 
+
+            ** body 하단에 script
+            DOMContentLoaded는 HTML parsing이 완료된 뒤 실행 => 두번째 출력: "DOMContentLoad"
+            load는 HTML parsing + resources가 다운로드된 뒤 실행 => 세번째 출력: "load"
+
+            (1) "js loaded" 과 "DOMContentLoad"는 HTML parsing이 완료되면 출력되며 "js loaded"가 먼저 출력된다  
+            (2) resources가 많다면 "DOMContentLoad" 빨리보여지고 시간이 경과된 뒤 "load" 출력되어 event가 비로서 실행된다
+            (3) defer의 경우 (HTML parsing + js 파일 fetching) 동시에 진행되기에 HTML parsing 마무리되면 event는 바로 실행된다 
+         -->
+
+		<script>
+			// only HTML
+			window.addEventListener('DOMContentLoaded', () => {
+				console.log('DOMContentLoaded');
+			});
+
+			// HTML + resourecs (css, image, font etc.)
+			window.addEventListener('load', () => {
+				console.log('load');
+			});
+
+			// before unload
+			window.addEventListener('beforeunload', () => {
+				console.log('beforeunload');
+			});
+
+			// resources is being unloaded
+			window.addEventListener('unloaded', () => {
+				console.log('unloaded');
+			});
+		</script>
+	</body>
+</html>
