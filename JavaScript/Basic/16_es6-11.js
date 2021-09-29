@@ -49,6 +49,12 @@
 	const { name, level } = student;
 	console.log(name, level);
 
+	function displayStudent(student) {
+		const { name, level } = student;
+		displayName(name);
+		displayLevel(level);
+	}
+
 	// 다른 이름으로 선언 가능
 	const { name: studentName, level: studentLevel } = student;
 	console.log(studentName, studentLevel);
@@ -95,18 +101,35 @@
 	// array concatenation
 	const fruits1 = ['🍊', '🍐'];
 	const fruits2 = ['🍋', '🥒'];
-	const fruits = [...fruits1, ...fruits2];
+	// const fruits = fruits1.concat(fruits2);
+	const fruits = [...fruits1, 'add', ...fruits2];
 	console.log(fruits);
+
+	// const newFruits = fruits.push('add');
+	const newFruits = [...fruits, 'add'];
+	// const newFruits = ['add', ...fruits];  => 앞에 추가
+	console.log(newFruits);
 
 	// object merge => 동일한 key는 덮어 쓴다
 	const dog1 = { dog: '🍤' };
 	const dog2 = { dog: '🥩' };
 	const dog = { ...dog1, ...dog2 };
 	console.log(dog);
+
+	// example
+	const item = { type: '👩', size: 'M' };
+	const detail = { price: 20, made: 'korea', gender: 'w' };
+
+	const mix = { ...item, ...detail, price: 40 }; // change price
+	console.log(mix);
+
+	const mix2 = Object.assign(item, detail);
+	console.log(mix2);
 }
 
 /**
  ** Default parameters (ES6)
+ * undefined 경우에만 적용
  */
 
 {
@@ -203,14 +226,26 @@
 		printManager(person1); // Bob
 		printManager(person2); // undefined
 	}
+
+	{
+		// Using nullish coalescing operator
+		function printManager(person) {
+			console.log(person.job?.manager?.name ?? 'No job yet');
+		}
+		printManager(person1); // Bob
+		printManager(person2); // No job yet
+	}
 }
 
 /**
  ** Nullish Coalescing Operator (ES11)
+ * leftExpr ?? rightExpr => rightExpr is being executed when leftExpr is null or undefined
+ * leftExpr || rightExpr => rightExpr is being executed when leftExpr is false
+ * flasy => flase, 0, -0, '', "", ``, null, undefined
+ * In case of 0 and '', different result comes out
  */
 
 {
-	// false: false, '', null, undefined
 	{
 		const name = 'Ellie';
 		const userName = name || 'Guest';
@@ -233,10 +268,82 @@
 		// name 값이 있다면 name 출력, 없다면 Guest 출력
 		const name = '';
 		const userName = name ?? 'Guest';
-		console.log(userName);
+		console.log(userName); // 빈문자
 
 		const num = 0;
 		const message = num ?? 'undefined';
-		console.log(message);
+		console.log(message); // 0
 	}
+
+	{
+		// Bad code
+		function printMessage(text) {
+			let message = text;
+			if (text == null || text == undefined) {
+				message = 'Nothing to display';
+			}
+			console.log(message);
+		}
+
+		// Good code
+		//  만일, text에 대해 default parameter를 사용하면 undefined 경우에만 적용됨
+		function printMessage2(text) {
+			const message = text ?? 'Nothing to display';
+			console.log(message);
+		}
+		printMessage2('Hello'); // Hello
+		printMessage2(null); // Nothing to display
+		printMessage2(undefined); // Nothing to display
+		printMessage2(0); // 0
+		printMessage2(''); // 빈 문자열
+
+		// 비교
+		function printMessage3(text) {
+			const message = text || 'Nothing to display';
+			console.log(message);
+		}
+		printMessage3('Hello'); // Hello
+		printMessage3(null); // Nothing to display
+		printMessage3(undefined); // Nothing to display
+		printMessage3(0); // Nothing to display
+		printMessage3(''); // Nothing to display
+	}
+
+	{
+		// It can be applied to function
+		const result = getInitialState() ?? fetchFromServer();
+		console.log(result);
+
+		function getInitialState() {
+			return null;
+		}
+
+		function fetchFromServer() {
+			return 'Wow~';
+		}
+	}
+}
+
+{
+	// Looping
+	const items = [1, 2, 3, 4, 5, 6];
+
+	const result = items
+		.filter((num) => num % 2 == 0)
+		.map((num) => num * 4)
+		.reduce((a, b) => a + b, 0);
+	console.log(result);
+
+	// Promise => Async, await
+	async function displayUser() {
+		const user = await fetchUser();
+		const profile = await fetchProfile(user);
+		updateUI(user, profile);
+	}
+}
+
+{
+	// Remove Duplicates!
+	const array = ['🍓', '🍓', '🥝', '🍑'];
+	console.log([...new Set(array)]);
 }
