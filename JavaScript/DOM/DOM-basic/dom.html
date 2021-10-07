@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			html {
+				padding: 0px;
+				margin: 0px;
+			}
+
+			body {
+				background-color: black;
+				text-align: center;
+			}
+			section {
+				width: 50%;
+				margin: 50px auto;
+				background-color: brown;
+				border-radius: 20px;
+				padding: 20px;
+			}
+
+			img {
+				z-index: 100;
+				will-change: opacity;
+			}
+
+			h1,
+			h3,
+			span {
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<img src="img/people.png" alt="" />
+			<img src="img/avatar.png" alt="avatar" />
+			<h1 id="brand">(h1)Dream Coding</h1>
+			<h3>(h3)Don't forget to code your dream</h3>
+		</section>
+		<span>Hello World!</span>
+
+		<div class="user-panel main"><input type="text" name="login" /></div>
+	</body>
+
+	<script>
+		// querySelector는 첫번째 해당 DOM을 반환하며 찾지 못하면 null 값을 반환함
+		const img = document.querySelector('img'); // people.png
+		console.log(img);
+
+		// 기존 방법
+		const brand = document.getElementById('brand');
+		console.log(brand);
+
+		// css 규칙을 이용하여 DOM 요소를 다양하게 가져 옴
+		const avatar = document.querySelector('img[src="img/avatar.png"]');
+		console.log(avatar);
+
+		// 해당 DOM 모두 가져 올 경우
+		const img_all = document.querySelectorAll('img');
+		console.log(img_all);
+
+		// DOM 요소 생성 => 속성/내용 추가 => HTML에 추가 (마지막에 추가됨)
+		const h2 = document.createElement('h2');
+		h2.setAttribute('class', 'title'); // <h2 class="title"></h2>
+		h2.textContent = '(h2) This is title';
+
+		const section = document.querySelector('section');
+		section.appendChild(h2);
+
+		const h4 = document.createElement('h4');
+		h4.textContent = '(h4) This is end';
+		section.appendChild(h4);
+
+		// 중간에 삽입 => insertBefore(newNode, referenceNode)
+		const h3 = document.querySelector('h3');
+		section.insertBefore(h2, h3);
+
+		// 노드 삭제
+		const body = document.querySelector('body');
+		const span = document.querySelector('span');
+		body.removeChild(span);
+
+		// innerHTML
+		const test1 = document.createElement('div');
+		section.appendChild(test1);
+		test1.innerHTML = `
+			<img src="img/avatar.png" alt="avatar" />
+			<h1 id="brand">Dream Coding</h1>
+		`;
+
+		// 속성값 선택
+		const test2 = document.querySelector(
+			'div.user-panel.main input[name="login"]'
+		);
+		test2.setAttribute('type', 'password');
+
+		const test3 = document.querySelector(
+			'div.user-panel:not(.main) input[name="login"]'
+		);
+	</script>
+</html>
