@@ -5,3 +5,4 @@ course-requirement-info.yaml
 requirements.txt 
 task-remote-info.yaml 
 *.pyc
+.vscode/
