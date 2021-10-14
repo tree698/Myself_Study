@@ -28,6 +28,8 @@
 			this._size++;
 		}
 
+		// this.head === undefined  =>  null일 경우 통과됨
+		// null == undefined  <==>  null !== undefined
 		pop(): string {
 			if (this.head == null) {
 				throw new Error('Stack is empty');
