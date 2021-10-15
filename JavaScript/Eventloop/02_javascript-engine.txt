@@ -1,0 +1,42 @@
+* Java는 언어 자체에서 multithreading이 지원됨 
+   => mulitthreading에 대해 코딩해야 하기에 배워야 할것이 많고 프로그래밍이 어려움
+
+* JavaScript는 Single Threaded 
+   => JavaScript가 동작하고 있는 브라우저는 여러개의 thread가 있기 때문에 
+   => Web API's를 이용하여 multithreading을 구현함
+   => JavaScript가 동작하는 runtime environment (실행환경)에서 다양한 방식으로 multithreading 효과 구현할수 있고
+   => eventloof를 통해 다양한 동작 실행
+
+* Web application code => browser => JavaScript engine => parse => execution
+
+* JavaScript engine (브라우저 內 => JavsScript 실행)
+  - Memory heap: 변수 선언 후 오브젝트/문자열/숫자등 할당 時, 그 데이터는 모두 Memory Heap에 저장
+  - Call Stack: 함수의 호출 순서 저장 (LIFO), 사이즈가 지정되어 있음 => "Maximun call stack size exceed"  
+
+
+(JavaScript Runtime Environment === Browser Runtime Environment)
+
+JavaScript만으로는 한정적 기능 => Web APIs(=> 브라우저 제공 => multithreading 가능) 활용
+  - DOM API
+  - setTimeout: 일정시간 뒤 콜백함수 실행 
+  - setInterval
+  - fetch: 백엔드에서 데이터 받아 옴
+  - event listener
+
+JavaScript engine과 Web API's의 협력 => (예) setTimeout
+  (coding)
+    - setTimeout 함수 => 3초 후 'hello' 출력하는 콜백함수 등록
+    - second가 setTimeout 함수호출
+  (Call stack)  
+    - second - setTimeout 순으로 저장
+    - setTimeout 호출 순간, Call stack에서 지워짐
+    - Web API는 타이머 시작 => 타이머와 자바스크립트 엔진은 병렬적으로 실행
+  (Web API)
+    - 3초뒤 Web API는 콜백을 Task Queue에 넣는다 (task queue => FIFO)
+  (event loop) => call stack과 task queue를 관찰 
+    - call stack이 비워질때까지 기다리고, 비워지면 콜백을 call stack에 넣음
+    - task queue는 한번에 하나만 내보냄 
+  (Call stack)
+    - 콜백함수 실행 
+
+

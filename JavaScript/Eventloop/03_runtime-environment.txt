@@ -1,0 +1,35 @@
+* Web APIs에서 등록한 콜백을 특정한 이벤트가 발생하게 되면 task queue에 넣고 event loop에 의해
+콜스택이 비어져 있을때 하나씩 콜스택에 가져가고 콜스택에서 수행중인 코드 블럭이 종료될때까지
+event loop는 콜스택에서 기다림 (콜스택에서 수행중인 코드블럭은 끝날때까지 보장된다)
+
+1. Task Queue
+Web APIs에서 등록된 콜백 함수가 들어감
+
+2. Microtask Queue
+promise, mutation observer에 등록된 콜백함수가 들어감 
+
+3. Render sequence
+요소를 움직이거나 애미메이션 등으로 인한 업데이트를 화면(브라우저)에 반영  
+
+(1) Request Animation Frame => Queue
+Web API 중 하나인 window.requestAnimationFrame(callback)에 등록된 콜백은 
+Request Animation Frame Queue에 들어감 
+(2) Render Three 
+(3) Layout 
+(4) Paint / Composition
+
+=====================================
+(작동 순서)
+
+1. event loop가 빙글 돌면서 콜스택에 수행 중인 작업(function)이 있다면 그 작업이 종료될때까지 콜스택에 머물러 있음
+2. 그래서, 콜스택에 수행 중인 작업이 시간이 많이 걸리면 화면에 바로 바로 업데이트되어 보이지 않음 
+3. (예) 클릭 이벤트가 발생해도 클릭에 등록된 콜백 함수가 실행되지 않음 => event loop가 콜스택에 머물러 있기 때문...
+4. 콜스택이 비워지면, 빙글 돌면서 Render sequence에 갈수도 안갈수도 있음
+5. 60fps(16.7ms/frame)를 지켜야 하기에 JavaScript engine에 따라 Render sequence에 방문하는 시간이 지정되어 있음
+6. microtask queue에 멈춰서 queue에 있는 모든 콜백 함수를 하나씩 콜스택으로 옮겨 수행한다
+7. 이런 작업 중 새로운 콜백 함수가 들어오면 그 콜백함수도 콜스택으로 모두 옮겨 수행한다
+8. microtask queue가 모두 비워지게 되면 다음 순회를 시작한다 
+9. task queue에서는 한번에 하나의 콜백 함수만 콜스택으로 옮겨서 그 콜백함수가 끝날때까지 기다리고 다음 순회를 한다
+10. 각 javascript engine에서 지정된 브라우저 업데이트 시간이 되면 render sequece에 방문한다
+11. Request Animation Frame queue에 등록된 콜백 함수를 하나씩 모두 실행한 뒤 Render Tree로 이동해서
+12. 렌더 트리를 만들고 그 트리를 이용해서 레이아웃을 계산하고 다음에 페인트를 통해 브라우저에 업데이트하고 다음 순회를 시작한다

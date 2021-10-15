@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.settime {
+				background-color: antiquewhite;
+				cursor: pointer;
+			}
+
+			.box {
+				width: 100px;
+				height: 100px;
+				background-color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<button>Click to add</button>
+		<button class="dance">Let's dance</button>
+		<div class="box"></div>
+
+		<script>
+			/* 클릭 발생時, 콜백함수는 task queue에 들어감
+            이벤트 루프에 의해 콜백함수가 콜스택에 옮겨지면
+            그 코드들이 모두 실행될때까지 기다렸다가 렌더링 될때
+            전체적으로 적용된 것이 레이아웃 페인트를 걸쳐서 브라우저에 표시됨
+            따라서, 콜백함수에서 작성된 코드는 순서에 상관없음 */
+			const button = document.querySelector('button');
+			button.addEventListener('click', () => {
+				const element = document.createElement('h1');
+				document.body.appendChild(element);
+				element.style.color = 'red';
+				element.innerText = 'hello';
+			});
+
+			/*  콜스택에서 코드 실행 중에는 브라우저에 업데이트 되지 않음
+            최종적인 결과물이 렌더링에 반영됨
+            따라서, translateX(500px), yellow가 최종적으로 반영됨 */
+			const danceBtn = document.querySelector('.dance');
+			const box = document.querySelector('.box');
+			danceBtn.addEventListener('click', () => {
+				console.log('yes');
+				box.style.transition = 'transform 1s ease-in';
+				box.style.transform = 'translateX(800px)'; // X축으로 800px 이동
+				box.style.transform = 'translateX(500px)'; // X축으로 500px 이동 (300px 만큼 돌아오는 효과)
+				box.style.backgroundColor = 'blue';
+				box.style.backgroundColor = 'oragne';
+				box.style.backgroundColor = 'yellow';
+			});
+
+			/* 이벤트 루프는 콜스택에서 콜백함수가 완료될때까지 기다리므로 (브라우저 업데이트 안됨)
+            콜백함수는 간단한 것이 좋다
+            콜백함수에 loop, while, 재귀함수 등의 사용은 주의! */
+		</script>
+	</body>
+</html>

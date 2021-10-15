@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			button:hover {
+				background-color: blueviolet;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<button>Continue with SetTimeout</button>
+
+		<script>
+			/* 이벤트 루프는 콜스택에서 콜백함수가 완료될때까지 기다리므로 (브라우저 업데이트 안됨)
+            콜백함수는 간단한 것이 좋다
+            콜백함수에 loop, while, 재귀함수 등의 사용은 주의! */
+
+			/* handleClick()은 무한 반복하는 함수
+            1. setTimeout() 콜백함수 등록
+            2. click 이벤트 발생
+            3. 콜백함수는 task queue로 들어감
+            4. 이벤트 루프에 의해 한번에 하나씩 콜스택으로 감
+            5. 이벤트 루프는 콜백함수 완료까지 기다림
+            6. 콜백함수에 의해 다시 콜백 함수를 부르고 위 사항을 반복
+            => 이런 반복에도 브라우저는 업데이트됨 (버튼의 hover 작동)
+            => 이벤트 루프는 가끔씩 render에도 방문하기 때문임 */
+			function handleClick() {
+				console.log('handleClick');
+				setTimeout(() => {
+					console.log('setTimeout');
+					handleClick();
+				}, 0);
+			}
+
+			const button = document.querySelector('button');
+			button.addEventListener('click', () => {
+				handleClick();
+			});
+		</script>
+	</body>
+</html>

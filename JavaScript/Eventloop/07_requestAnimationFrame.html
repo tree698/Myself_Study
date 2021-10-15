@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<button>RequestAnimationFrame</button>
+		<script>
+			// 배경색은 orange가 됨
+			const button = document.querySelector('button');
+			button.addEventListener('click', () => {
+				requestAnimationFrame(() => {
+					document.body.style.backgroundColor = 'beige';
+				});
+				requestAnimationFrame(() => {
+					document.body.style.backgroundColor = 'orange';
+				});
+				requestAnimationFrame(() => {
+					document.body.style.color = 'red';
+				});
+
+				/* 콜백함수가 모두 실행되고 난 뒤 0초 후(이벤트루프의 다음 turn때) 
+                setTimeout의 콜백함수를 실행  */
+				setTimeout(() => {
+					// 콜백 함수...
+				}, 0);
+			});
+		</script>
+	</body>
+</html>
