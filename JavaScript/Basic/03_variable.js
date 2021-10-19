@@ -137,6 +137,7 @@ console.log(text.charAt(0));
  * Variable Copy
  */
 
+// let
 let num = 2;
 let num2 = num;
 
@@ -144,14 +145,38 @@ num2 = 3;
 console.log(num); //2
 console.log(num2); //3
 
-const obj = {
+// const
+const num3 = 3;
+const num4 = num3;
+
+num4 = 4; // error!
+
+// let => 내용 변경 가능
+let obj = {
+	name: 'coder',
+	age: 20,
+};
+obj = {
+	name: 'Steve',
+	age: 50,
+};
+
+// const => 내용 변경 불가
+const obj2 = {
 	name: 'ellie',
 	age: 5,
 };
-const obj2 = obj; // obj와 obj2는 동일 주소를 가짐
+obj2 = {
+	name: 'lee',
+	age: 30,
+};
+obj.name = 'lee'; // object 내용에 직접 접근하여 변경
 
-obj.name = 'Lee';
-console.log(obj.name); //Lee
-console.log(obj2); //Lee
+// obj와 obj2는 동일 주소를 가짐 ==> const, let 동일
+const obj3 = obj2;
+
+obj3.name = 'Lee';
+console.log(obj2.name); //Lee
+console.log(obj3.name); //Lee
 
 // (end)

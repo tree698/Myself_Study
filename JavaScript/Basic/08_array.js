@@ -19,6 +19,12 @@ console.log(fruits.length);
 console.log(fruits[0]);
 console.log(fruits[fruits.length - 1]); // 마지막 원소 출력
 
+let test = [];
+let index = 0;
+test[index++] = 1; // test[0]=1, index=1
+test[++index] = 2; // test[2]=2, index=2
+console.log(test); // [1, empty, 2] => test[1]= 지정되지 않음
+
 /**
  * Looping over an array
  * for, for of, forEach

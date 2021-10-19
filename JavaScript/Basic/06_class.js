@@ -12,7 +12,6 @@
     - syntactical sugar over prototype-based inheritance
 */
 
-
 /* 
     1. Class declarations
     - constructor => 인스턴스 생성시 항상 호출되는 함수로 전달되어야 하는 정보 포함 
@@ -29,7 +28,6 @@
 	* In object-oriented programming, a class is an extensible program-code-template for creating objects, 
 	* providing initial values for state (member variables) and implementations of behavior (member functions or methods)
 */
-
 
 class Person {
 	constructor(name, age) {
@@ -58,13 +56,13 @@ class User {
 	constructor(firstName, lastName, age) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.age = age;    
-        // this.age는 getter가 생성되는 순간 getter를 호출, age는 setter가 생성되는 순간 setter를 호출 
-        // 전달받은 value 값을 this.age에 대입할때 무한 반복 => 다른 변수명 사용 (this._age)
+		this.age = age;
+		// this.age는 getter가 생성되는 순간 getter를 호출, age는 setter가 생성되는 순간 setter를 호출
+		// 전달받은 value 값을 this.age에 대입할때 무한 반복 => 다른 변수명 사용 (this._age)
 	}
 	// getter => 값을 return
 	get age() {
-		return this._age; /
+		return this._age;
 	}
 	// setter => 값을 전달 받아 설정
 	set age(value) {
@@ -72,7 +70,7 @@ class User {
 		//     throw new Error('age can not be negative');
 		// }
 		// this._age = value;
-		this._age = value < 0 ? 0 : value; 
+		this._age = value < 0 ? 0 : value;
 	}
 }
 
@@ -88,7 +86,7 @@ const experiment = new Experiment();
 console.log(experiment.publicField);
 console.log(experiment.privateField);
 
-// 4. Static properties and methods\ => too soon! 
+// 4. Static properties and methods => too soon!
 // object (전달되는 값)에 상관없이 쓰이는 것 (공통적으로 사용 / class level)에 사용함으로써 메모리 사용을 줄임
 class Article {
 	static publisher = 'Dream Coding';
@@ -130,7 +128,7 @@ console.log(rectangle.getArea());
 
 class Triangle extends Shape {
 	draw() {
-		super.draw();     // 부모의 draw도 호출됨 (super)
+		super.draw(); // 부모의 draw도 호출됨 (super)
 		console.log('TTTTTTT');
 	}
 	getArea() {
@@ -149,6 +147,5 @@ console.log(triangle instanceof Shape);
 console.log(triangle instanceof Object);
 
 console.log(triangle.toString());
-
 
 // (end)

@@ -27,6 +27,14 @@ const postIncrement = counter++;
 counter = counter + 1;  */
 console.log(`postIncrement: ${postIncrement}, counter: ${counter}`); /* 3 4 */
 
+let n = 1;
+console.log(n++); // 1
+console.log(n); // 2
+
+let m = 1;
+console.log(++m); // 2
+console.log(m); // 2
+
 // 4. Assignment operators
 let x = 3;
 let y = 6;
