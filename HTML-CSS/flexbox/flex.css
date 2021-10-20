@@ -1,0 +1,127 @@
+/* 1. container
+ - display
+ - flex-direction
+ - flex-wrap
+ - flex-flow
+ - justify-content
+ - align-items
+ - align-content
+  */
+
+/* 2. item
+ - order
+ - flex-grow
+ - flex-shrink
+ - flex-basis
+ - align-self
+  */
+
+/* 3. axis
+ - main axis : item이 나열된 방향 (수평 or 수직)
+ - cross axis
+  */
+
+.container {
+	background-color: beige;
+	height: 100vh;
+	/* width: 300px; */
+	/* height: 300px; */
+
+	/* default: row */
+	display: flex;
+
+	/* flex-direction: row; */
+	/* flex-direction: row-reverse; */
+	/* flex-direction: column; */
+	/* flex-direction: column-reverse; */
+
+	/* default: no-wrap => 한줄에 모두 표시 */
+	/* flex-wrap: nowrap; */
+	/* flex-wrap: wrap; */
+	/* flex-wrap: wrap-reverse; */
+
+	/* flex-flow: column nowrap; */
+
+	/* 중심축(main axis)에서 아이템 순서 유지하며 아이템 위치 지정 */
+	/* justify-content: flex-start; */
+	/* justify-content: flex-end; */
+	/* justify-content: center; */
+	/* justify-content: space-around; */
+	/* justify-content: space-evenly; */
+	/* justify-content: space-between; */
+
+	/* 반대축(cross axis)에서 아이템 순서 유지하며 아이템 위치 지정 */
+	/* align-content: flex-start; */
+	/* align-content: flex-end; */
+	/* align-content: center; */
+	/* align-content: space-around; */
+	/* align-content: space-between; */
+
+	/* 반대축(cross axis)에서 수직적으로 중심에 놓고 싶을때, 
+    baseline은 박스 크기 차이로 인한 => 텍스트의 위치를 맞출때  */
+	/* align-items: center; */
+	/* align-items: baseline; */
+}
+
+.item {
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+}
+
+.item1 {
+	background: #ef9a9a;
+	order: 2;
+	/* flex-grow: 1;
+	flex-shrink: 1; */
+
+	flex-basis: 10%;
+	align-self: center;
+}
+
+.item2 {
+	background: #f48fb1;
+	order: 1;
+	/* flex-grow: 3;
+	flex-shrink: 4; */
+
+	flex-basis: 80%;
+	align-self: flex-end;
+}
+
+.item3 {
+	background: #ce93d8;
+	order: 3;
+	/* flex-grow: 0;
+	flex-shrink: 1; */
+
+	flex-basis: 10%;
+}
+
+/* .item4 {
+	background: #b39ddb;
+}
+
+.item5 {
+	background: #90caf9;
+}
+
+.item6 {
+	background: #a5d6a7;
+}
+
+.item7 {
+	background: lightblue;
+}
+
+.item8 {
+	background: grey;
+}
+
+.item9 {
+	background: lightseagreen;
+}
+
+.item10 {
+	background: #90caf9;
+} */
