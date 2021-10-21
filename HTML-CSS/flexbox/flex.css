@@ -31,16 +31,16 @@
 	display: flex;
 
 	/* flex-direction: row; */
-	/* flex-direction: row-reverse; */
+	/* flex-direction: row-reverse; */ /* 순서를 바꾸고 flext-end */
 	/* flex-direction: column; */
-	/* flex-direction: column-reverse; */
+	/* flex-direction: column-reverse; */ /* 순서를 바꾸고 flex-end */
 
 	/* default: no-wrap => 한줄에 모두 표시 */
 	/* flex-wrap: nowrap; */
 	/* flex-wrap: wrap; */
 	/* flex-wrap: wrap-reverse; */
 
-	/* flex-flow: column nowrap; */
+	/* flex-flow: column nowrap; */ /* no comma */
 
 	/* 중심축(main axis)에서 아이템 순서 유지하며 아이템 위치 지정 */
 	/* justify-content: flex-start; */
@@ -51,16 +51,19 @@
 	/* justify-content: space-between; */
 
 	/* 반대축(cross axis)에서 아이템 순서 유지하며 아이템 위치 지정 */
+	/*  baseline은 박스 크기 차이로 인한 => 텍스트의 위치를 맞출때  */
+	/* align-items: flex-start; */
+	/* align-items: flex-end; */
+	/* align-items: center; */
+	/* 	align-items: stretch; */
+	/* align-items: baseline; */
+
+	/* 반대축(cross axis), multi-line containers, wrap or wrap-reverse */
 	/* align-content: flex-start; */
 	/* align-content: flex-end; */
 	/* align-content: center; */
 	/* align-content: space-around; */
 	/* align-content: space-between; */
-
-	/* 반대축(cross axis)에서 수직적으로 중심에 놓고 싶을때, 
-    baseline은 박스 크기 차이로 인한 => 텍스트의 위치를 맞출때  */
-	/* align-items: center; */
-	/* align-items: baseline; */
 }
 
 .item {
@@ -87,6 +90,11 @@
 
 	flex-basis: 80%;
 	align-self: flex-end;
+	/* align-self: auto; */
+	/* align-self: flex-start; */
+	/* align-self: center; */
+	/* align-self: baseline; */
+	/* align-self: stretch; */
 }
 
 .item3 {
