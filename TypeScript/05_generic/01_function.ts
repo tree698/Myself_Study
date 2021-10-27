@@ -15,8 +15,8 @@
 	}
 
 	// type of num is any => type 정보를 잃어버림
-	const any = checkNotNullAnyBad(123);
-	console.log(any);
+	const num = checkNotNullAnyBad(123);
+	console.log(num);
 
 	function checkNotNull<T>(arg: T | null): T {
 		if (arg === null) {
@@ -25,9 +25,9 @@
 		return arg;
 	}
 
-	const num = checkNotNull(123);
+	const num2 = checkNotNull(123);
 	const boal: boolean = checkNotNull(true);
 
-	console.log(num);
+	console.log(num2);
 	console.log(boal);
 }
