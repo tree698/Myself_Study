@@ -12,8 +12,8 @@
  - order
  - flex-grow
  - flex-shrink
- - flex-basis
- - align-self
+ - flex-basis : 기본 크기 지정 
+ - align-self : 아이템별로 위치 시킴
   */
 
 /* 3. axis
@@ -22,88 +22,88 @@
   */
 
 .container {
-	background-color: beige;
-	height: 100vh;
-	/* width: 300px; */
-	/* height: 300px; */
+  background-color: beige;
+  height: 100vh;
+  /* width: 300px; */
+  /* height: 300px; */
 
-	/* default: row */
-	display: flex;
+  /* default: row */
+  display: flex;
 
-	/* flex-direction: row; */
-	/* flex-direction: row-reverse; */ /* 순서를 바꾸고 flext-end */
-	/* flex-direction: column; */
-	/* flex-direction: column-reverse; */ /* 순서를 바꾸고 flex-end */
+  /* flex-direction: row; */
+  /* flex-direction: row-reverse; */ /* 순서를 바꾸고 flext-end */
+  /* flex-direction: column; */
+  /* flex-direction: column-reverse; */ /* 순서를 바꾸고 flex-end */
 
-	/* default: no-wrap => 한줄에 모두 표시 */
-	/* flex-wrap: nowrap; */
-	/* flex-wrap: wrap; */
-	/* flex-wrap: wrap-reverse; */
+  /* default: no-wrap => 한줄에 모두 표시 */
+  /* flex-wrap: nowrap; */
+  /* flex-wrap: wrap; */
+  /* flex-wrap: wrap-reverse; */
 
-	/* flex-flow: column nowrap; */ /* no comma */
+  /* flex-flow: column nowrap; */ /* no comma */
 
-	/* 중심축(main axis)에서 아이템 순서 유지하며 아이템 위치 지정 */
-	/* justify-content: flex-start; */
-	/* justify-content: flex-end; */
-	/* justify-content: center; */
-	/* justify-content: space-around; */
-	/* justify-content: space-evenly; */
-	/* justify-content: space-between; */
+  /* 중심축(main axis)에서 아이템 순서 유지하며 아이템 위치 지정 */
+  /* justify-content: flex-start; */
+  /* justify-content: flex-end; */
+  /* justify-content: center; */
+  /* justify-content: space-around; */
+  /* justify-content: space-evenly; */
+  /* justify-content: space-between; */
 
-	/* 반대축(cross axis)에서 아이템 순서 유지하며 아이템 위치 지정 */
-	/*  baseline은 박스 크기 차이로 인한 => 텍스트의 위치를 맞출때  */
-	/* align-items: flex-start; */
-	/* align-items: flex-end; */
-	/* align-items: center; */
-	/* 	align-items: stretch; */
-	/* align-items: baseline; */
+  /* 반대축(cross axis)에서 아이템 순서 유지하며 아이템 위치 지정 */
+  /*  baseline은 박스 크기 차이로 인한 => 텍스트의 위치를 맞출때  */
+  /* align-items: flex-start; */
+  /* align-items: flex-end; */
+  /* align-items: center; */
+  /* 	align-items: stretch; */
+  /* align-items: baseline; */
 
-	/* 반대축(cross axis), multi-line containers, wrap or wrap-reverse */
-	/* align-content: flex-start; */
-	/* align-content: flex-end; */
-	/* align-content: center; */
-	/* align-content: space-around; */
-	/* align-content: space-between; */
+  /* 반대축(cross axis), multi-line containers, wrap or wrap-reverse */
+  /* align-content: flex-start; */
+  /* align-content: flex-end; */
+  /* align-content: center; */
+  /* align-content: space-around; */
+  /* align-content: space-between; */
 }
 
 .item {
-	width: 50px;
-	height: 50px;
-	border: 1px solid black;
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
 }
 
 .item1 {
-	background: #ef9a9a;
-	order: 2;
-	/* flex-grow: 1;
+  background: #ef9a9a;
+  order: 2;
+  /* flex-grow: 1;
 	flex-shrink: 1; */
 
-	flex-basis: 10%;
-	align-self: center;
+  flex-basis: 10%;
+  align-self: center;
 }
 
 .item2 {
-	background: #f48fb1;
-	order: 1;
-	/* flex-grow: 3;
+  background: #f48fb1;
+  order: 1;
+  /* flex-grow: 3;
 	flex-shrink: 4; */
 
-	flex-basis: 80%;
-	align-self: flex-end;
-	/* align-self: auto; */
-	/* align-self: flex-start; */
-	/* align-self: center; */
-	/* align-self: baseline; */
-	/* align-self: stretch; */
+  flex-basis: 80%;
+  align-self: flex-end;
+  /* align-self: auto; */
+  /* align-self: flex-start; */
+  /* align-self: center; */
+  /* align-self: baseline; */
+  /* align-self: stretch; */
 }
 
 .item3 {
-	background: #ce93d8;
-	order: 3;
-	/* flex-grow: 0;
+  background: #ce93d8;
+  order: 3;
+  /* flex-grow: 0;
 	flex-shrink: 1; */
 
-	flex-basis: 10%;
+  flex-basis: 10%;
 }
 
 /* .item4 {
