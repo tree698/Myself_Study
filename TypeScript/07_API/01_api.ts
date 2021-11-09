@@ -13,12 +13,13 @@ Array;
 /*  every(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean; */
 
 type Student = {
-	passed: boolean;
+  passed: boolean;
 };
 
 const students: Student[] = [{ passed: true }, { passed: false }];
+// const result = students.every((student) => student.passed);
 const result = students.every((student) => {
-	return student.passed;
+  return student.passed;
 });
 console.log(result); // false
 
@@ -29,18 +30,21 @@ console.log(result); // false
 
 class Animal {}
 class Cat extends Animal {
-	isCat: boolean = true;
+  isCat: boolean = true;
 }
 class Dog extends Animal {
-	isDog: boolean = true;
+  isDog: boolean = true;
 }
 
 function isCat(animal: Animal): animal is Cat {
-	return (animal as Cat).isCat !== undefined;
+  return (animal as Cat).isCat !== undefined;
 }
 
 const animals: Animal[] = [new Cat(), new Cat(), new Dog()];
 
 // Cat은 Animal을 상속, predicate로 isCat 전달
-console.log(animals.every<Cat>((animal) => isCat(animal))); // why error ??
+console.log(
+  animals.every<Cat>((animal) => isCat(animal)) // why error ??
+);
+// 축약형 ?
 console.log(animals.every<Cat>(isCat)); // false
