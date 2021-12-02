@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boxsizing</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+      .inner {
+        width: 100%;
+        height: 100%;
+        background-color: blue;
+      }
+
+      .box2 {
+        padding: 20px;
+        box-sizing: content-box;
+        border: 10px solid black;
+      }
+
+      .box3 {
+        padding: 20px;
+        box-sizing: border-box;
+        border: 10px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 브라우저에서 확인 할것 -->
+
+    <h2>Box without padding & border</h2>
+    <div class="box box1">
+      <div class="inner"></div>
+    </div>
+
+    <h2>Box with padding & border => content-box</h2>
+    <div class="box box2">
+      <div class="inner"></div>
+    </div>
+
+    <h2>Box with padding & border => boder-box</h2>
+    <div class="box box3">
+      <div class="inner"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+* BEM
+BLOCK__ELEMENT--MODIFIER
+
+For example 1.
+.card
+.card__img
+.card__title
+.card__description
+.card__button
+
+For example 2.
+.card--dark
+.card__button--blue
+
+if button commonely used in other blocks, it should be a block.
+.card
+.card__img
+.card__title
+.card__description
+.button--blue
+
+For example 3.
+.cards
+.card
+.card__title
+.card__description
+
