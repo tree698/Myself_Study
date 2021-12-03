@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 150px;
+        height: 150px;
+        background-color: beige;
+      }
+      .inner {
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+      }
+
+      /* block 요소는 margin-right를 가지고 있어 한줄 차지 => margin: auto */
+      .inner1 {
+        margin: auto;
+      }
+
+      /* text-align은 block 요소 안에서 (텍스트와 버튼같은) 인라인 요소의 중앙정렬에 사용 */
+      /* block > inlineblock => text-align: center */
+      /* block > block => text-align: center > margin: auto */
+      .box2 {
+        text-align: center;
+      }
+      .inner2 {
+        margin: auto;
+      }
+
+      /* 자식요소가 부모요소의 절반인 경우 */
+      /* .inner3 {
+        transform: translate(50%, 50%);
+      } */
+
+      /* 자식요소가 부모요소의 절반이 아닌 경우 */
+      .inner3 {
+        /* 시작점 (0,0) 기준으로 중앙정렬 => translate(-50%, -50%) */
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* line-hight => 텍스트 높이를 박스 높이로 변경하여 세로 중앙정렬 => 2줄일 경우... 주의 */
+      .box4 {
+        text-align: center;
+        line-height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>margin: auto</h2>
+    <div class="box box1">
+      <div class="inner inner1"></div>
+    </div>
+
+    <h2>text-align: center</h2>
+    <div class="box box2">
+      <div class="inner inner2"></div>
+    </div>
+
+    <h2>translate(50%, 50%)</h2>
+    <div class="box box3">
+      <div class="inner inner3"></div>
+    </div>
+
+    <h2>text centering</h2>
+    <div class="box box4">
+      <h1>Text</h1>
+    </div>
+  </body>
+</html>
