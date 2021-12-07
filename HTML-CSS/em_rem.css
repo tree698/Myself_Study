@@ -1,0 +1,152 @@
+/* 
+Absolute: px
+relative
+   - em: relative to partent element
+   - rem: relative to root element
+   - vw
+   - vh
+   - %: similar to em   
+*/
+
+/* 
+1em = 16px 
+html(root) 
+    - 100% (default): 브라우저에서 지정한 폰트 사이즈 (default 16px)를 따라감  
+            => 브라우저에서 폰트 사이즈를 변경함에 따라 반응형으로 변동 
+    - if 24px, 반응형으로 변동하지 않음  
+*/
+
+html {
+  font-size: 100%;
+}
+.patent_1 {
+  font-size: 8em;
+  /* font-size: 800%; */
+  /* 8 * 16px = 128px */
+}
+.child_1 {
+  font-size: 0.5em;
+  /* font-size: 50%; */
+  /* 0.5 * 128px = 64px    */
+}
+
+.patent_2 {
+  font-size: 8rem;
+  /* 8 * 16px = 128px */
+}
+.child_2 {
+  font-size: 0.5rem;
+  /* 0.5 * 16px = 8px    */
+}
+
+.patent_3 {
+  font-size: 8rem;
+  width: 500px;
+}
+.child_3 {
+  font-size: 0.5rem;
+  width: 50%;
+  /* 250px로 고정 */
+  width: 50vw;
+  /* 보여지는 화면의 50% 차지 */
+}
+
+/* 
+부모요소에 따라 변경: %, em
+브라우저에 따라 변경: vh, vw, rem  
+*/
+
+/* 
+박스 등 그 자체 사이즈를 결정할때...: %, vh, vw, flex  
+요소의 폰트 사이즈를 결정할때...: em, rem  
+    - rem(root 기준) => font-size => title, header 등 동일한 크기 유지 
+    - em(부모 기준)ㄴ => padding, margin => 폰트 사이즈에 따라 변동해야 하는 것들...
+*/
+
+/* level 1,2,3,4는 각각 부모 자식관계 */
+.level1 {
+  font-size: 2em;
+  /* 2 * 16px = 32px */
+}
+.level2 {
+  font-size: 2em;
+  /* 2 * 32 = 64px */
+}
+.level3 {
+  font-size: 2em;
+  /* 2 * 64px = 128px */
+}
+.level4 {
+  font-size: 2em;
+  /* 2 * 128px = 256px */
+}
+
+.level1 {
+  font-size: 2rem;
+  /* 2 * 16px = 32px */
+}
+.level2 {
+  font-size: 2rem;
+  /* 2 * 16px = 32px */
+}
+.level3 {
+  font-size: 2rem;
+  /* 2 * 16px = 32px */
+}
+.level4 {
+  font-size: 2rem;
+  /* 2 * 16px = 32px */
+}
+
+/* 폰트 사이즈 변경에 따른 padding 변경 */
+h1 {
+  display: inline-block;
+  font-size: 5em;
+  padding: 1em;
+  background-color: green;
+}
+
+/* mediaquery 변경 */
+@media screen and (max-with: 780px) {
+  h1 {
+    font-size: 3em;
+    /* 화면이 커지면 폰트 사이즈도 커지게... */
+  }
+
+@media screen and (min-width: 380px) {
+    h1 {
+        font-size: 1.5em;
+        /* 화면이 작아지면 폰트 사이즈도 작아지게... */
+      }
+    }
+
+@media screen and (max-width: 48rem) {
+    /* 반응형 경계 => rem */
+  h1 {
+    font-size: 1.5em;
+  }
+}
+
+/* em vs rem demo */
+.component {
+  width: 50%;
+  border: 1px solid burlywood;
+  font-size: 2rem;
+}
+.title {
+  padding: 0.5em 0.5rem;
+  /* 위아래는 부모 폰트 크기에 따라 변동 */
+  /* 좌우는 브라우저에 따라 고정 크기로 지정 */
+  background-color: burlywood;
+}
+.contents {
+  padding: 0.5em 0.5rem;
+  /* 타이틀과 컨텐츠의 왼쪽 들여쓰기 크기가 동일해짐 */
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 780px) {
+  .component {
+    font-size: 1.5rem;
+  }
+}
