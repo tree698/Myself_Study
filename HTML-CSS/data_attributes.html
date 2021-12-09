@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Attributes</title>
+    <style>
+      div,
+      span {
+        width: 200px;
+        height: 200px;
+        background-color: yellow;
+        margin-bottom: 50px;
+      }
+
+      [data-display-name='dream'] {
+        background-color: tomato;
+      }
+
+      div[data-display-name='dream'] {
+        background-color: beige;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 민감한 정보는 dataset 형태로 DOM 요소에 저장하지 않는다 -->
+    <div data-index="1" , data-display-name="dream"></div>
+    <div data-index="2" , data-display-name="coding"></div>
+    <span data-index="3" , data-display-name="dream">test</span>
+
+    <script>
+      // 쌍따옴표 주의
+      const name = document.querySelector('div[data-display-name="dream"]');
+      console.log(name.dataset); // index, displayName 정보를 보여줌
+      console.log(name.dataset.index); // 1
+      // displayName 주의!
+      console.log(name.dataset.displayName); //dream
+    </script>
+  </body>
+</html>
