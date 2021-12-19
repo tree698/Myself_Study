@@ -92,3 +92,32 @@ function scrollIntoView(selection) {
   const scrollTo = document.querySelector(selection);
   scrollTo.scrollIntoView({ behavior: 'smooth' });
 }
+
+// intersection observer
+// 1. 모든 섹션 요소들을 가져온다
+// 2. IntersectionObserver를 이용하여 모든 섹션을 관찰한다
+// 3. 보여지는 섹션에 해당하는 메뉴 아이템을 활성화 한다
+
+const sectionIds = [
+  '#home',
+  '#about',
+  '#skills',
+  '#work',
+  '#testimonials',
+  '#contact',
+];
+
+const sections = sectionIds.map((id) => document.querySelector(id));
+const navbarItems = sectionIds.map((id) =>
+  document.querySelector(`[data-link="${id}"]`)
+);
+
+const observerCallback = (entries, observer) => {
+  entries.forEach((entry) => {
+    console.log(entry.target);
+  });
+};
+const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
+
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+sections.forEach((section) => observer.observe(section));
