@@ -114,7 +114,11 @@ const navbarItems = sectionIds.map((id) =>
 
 const observerCallback = (entries, observer) => {
   entries.forEach((entry) => {
-    console.log(entry.target);
+    const index = sectionIds.indexOf(entry.target.id);
+    if (!entry.isintersecting) {
+      if (entry.getBoundingClientRect.y < 0) {
+      }
+    }
   });
 };
 const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
