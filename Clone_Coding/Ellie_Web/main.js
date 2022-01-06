@@ -13,11 +13,13 @@ document.addEventListener('scroll', () => {
 // Handle scrolling when tapping on the navbar menu
 const navBarMenu = document.querySelector('.navbar__menu');
 navBarMenu.addEventListener('click', (event) => {
-  const target = event.target.dataset.link;
-  if (target == null) {
+  const target = event.target;
+  const link = target.dataset.link;
+  if (link == null) {
     return;
   }
-  scrollIntoView(target);
+  navBarMenu.classList.remove('open');
+  scrollIntoView(link);
 });
 
 // Toggling navbar menu
@@ -88,17 +90,12 @@ workBtnContainer.addEventListener('click', (e) => {
   }, 300);
 });
 
-function scrollIntoView(selection) {
-  const scrollTo = document.querySelector(selection);
-  scrollTo.scrollIntoView({ behavior: 'smooth' });
-}
-
 // intersection observer
 // 1. 모든 섹션 요소들을 가져온다
 // 2. IntersectionObserver를 이용하여 모든 섹션을 관찰한다
 // 3. 보여지는 섹션에 해당하는 메뉴 아이템을 활성화 한다
 
-const sectionIds = [
+const sectionIDs = [
   '#home',
   '#about',
   '#skills',
@@ -107,21 +104,55 @@ const sectionIds = [
   '#contact',
 ];
 
-const sections = sectionIds.map((id) => document.querySelector(id));
-const navbarItems = sectionIds.map((id) =>
-  document.querySelector(`[data-link="${id}"]`)
+const sections = sectionIDs.map((id) => document.querySelector(id));
+const navItems = sectionIDs.map((id) =>
+  document.querySelector(`li[data-link="${id}"]`)
 );
 
-const observerCallback = (entries, observer) => {
+const obsesrverOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.3,
+};
+
+let selectedNavIndex = 0;
+let selectedNavItem = navItems[0];
+function selectNavItem(selected) {
+  selectedNavItem.classList.remove('active');
+  selectedNavItem = selected;
+  selectedNavItem.classList.add('active');
+}
+
+function scrollIntoView(selection) {
+  const scrollTo = document.querySelector(selection);
+  scrollTo.scrollIntoView({ behavior: 'smooth' });
+  selectNavItem(navItems[sectionIDs.indexOf(selection)]);
+}
+
+const observerCallBack = (entries, obsesrver) => {
   entries.forEach((entry) => {
-    const index = sectionIds.indexOf(entry.target.id);
-    if (!entry.isintersecting) {
-      if (entry.getBoundingClientRect.y < 0) {
+    if (!entry.isIntersecting && entry.intersectionRatio > 0) {
+      const index = sectionIDs.indexOf(`#${entry.target.id}`);
+      if (entry.boundingClientRect.y < 0) {
+        selectedNavIndex = index + 1;
+      } else {
+        selectedNavIndex = index - 1;
       }
     }
   });
 };
-const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
 
-const observer = new IntersectionObserver(observerCallback, observerOptions);
+const observer = new IntersectionObserver(observerCallBack, obsesrverOptions);
 sections.forEach((section) => observer.observe(section));
+
+document.addEventListener('wheel', () => {
+  if (window.scrollY === 0) {
+    selectedNavIndex = 0;
+  } else if (
+    window.scrollY + window.innerHeight ===
+    document.body.clientHeight
+  ) {
+    selectedNavIndex = navItems.length - 1;
+  }
+  selectNavItem(navItems[selectedNavIndex]);
+});
