@@ -44,6 +44,8 @@
       // cool
       const ul = document.querySelector('ul');
       ul.addEventListener('click', (item) => {
+        // DOM 구조에서 요소(tagName)는 대문자로 표시
+        // event.target.tagName = 'LI'
         if (item.target.tagName === 'LI') {
           item.target.classList.add('selected');
         }
