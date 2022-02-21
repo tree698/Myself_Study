@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-		<style>
-			button {
-				background-color: antiquewhite;
-				cursor: pointer;
-			}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        background-color: antiquewhite;
+        cursor: pointer;
+      }
 
-			button:hover {
-				background-color: blueviolet;
-			}
-		</style>
-	</head>
-	<body>
-		<button>Continue with promise</button>
+      button:hover {
+        background-color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Continue with promise</button>
 
-		<script>
-			/* handleClick()는 무한 반복 함수
+    <script>
+      /* handleClick()는 무한 반복 함수
             1. 콜백함수 등록
             2. 클릭 이벤트 발생하면 콜백함수는 task queue로 이동
             3. 이벤트 루프가 한번에 하나씩 task queue의 콜백함수를 콜스택으로 이동시킴
-            4. 콜스택에서 콜백함수실행 중 promise  실행되고 then이 microtask queue로 이동
+            4. 콜스택에서 콜백함수실행 중 promise가 실행되고 then이 microtask queue로 이동
             5. 이벤트 루프는 mircotask queue의 콜백함수를 콜스택으로 이동시키고 실행
-            6. mircotaskqueie의 모든 콜백함수가 종료될깨까지 위 사항 반복
+            6. mircotaskqueue의 모든 콜백함수가 종료될깨까지 위 사항 반복
+			7. callstack과 microtaskqueue사이를 반복하므로 render sequence로 이동하지 않음
             따라서, 브라우저가 업데이트되지 않기에 버튼 hover가 작동하지 않음  */
-			function handleClick() {
-				console.log('handleClick');
-				Promise.resolve(0) //
-					.then(() => {
-						console.log('then');
-						handleClick();
-					});
-			}
-			const button = document.querySelector('button');
-			button.addEventListener('click', () => {
-				handleClick();
-			});
-		</script>
-	</body>
+      function handleClick() {
+        console.log('handleClick');
+        Promise.resolve(0) //
+          .then(() => {
+            console.log('then');
+            handleClick();
+          });
+      }
+      const button = document.querySelector('button');
+      button.addEventListener('click', () => {
+        handleClick();
+      });
+    </script>
+  </body>
 </html>
