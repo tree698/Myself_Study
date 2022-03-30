@@ -1,8 +1,9 @@
+<h2>Methods and attributes</h2>
 <html>
  <head></head>
  <body>
   <p>Now that you've learned how to create instance methods let's go even further and learn to use the methods for creating and modifying attributes.</p> 
-  <h2 style="text-align: center;">Creating attributes with methods</h2> 
+  <h5 style="text-align: center;">Creating attributes with methods</h5> 
   <p>Instance attributes are the ones defined within methods so by definition we can create new attributes inside our custom methods. Let's take the class <code class="language-python">Ship</code> as an example.</p> 
   <pre><code class="language-python">class Ship:
     def __init__(self, name, capacity):
@@ -36,7 +37,7 @@ print(black_pearl.captain)  # "Jack Sparrow"</code></pre>
         self.cargo = 0
         self.captain = None</code></pre> 
   <p>Then, in the specific method, you simply modify the default value which is what we'll consider in the next section.</p> 
-  <h2 style="text-align: center;">Modifying attributes with methods</h2> 
+  <h5 style="text-align: center;">Modifying attributes with methods</h5> 
   <p>Methods can also be used to modify the instance attributes. Take the methods <strong><code class="language-python">load_cargo</code></strong>and <strong><code class="language-python">unload_cargo</code></strong> for example:</p> 
   <pre><code class="language-python">class Ship:
     def __init__(self, name, capacity):
@@ -87,7 +88,7 @@ black_pearl.unload_cargo(300)
         else:
             print("Cannot load that much")</code></pre> 
   <p>In this example, we called a method inside another method and used the values in our calculations. Again, we used <code class="language-python">self</code> to make sure that we only deal with the particular instance of the class <code class="language-python">Ship</code> and that all calculations concern this instance.</p> 
-  <h2 style="text-align: center;">Summary</h2> 
+  <h5 style="text-align: center;">Summary</h5> 
   <p>In this topic, we focused on more advanced uses of instance methods in Python.</p> 
   <p>Methods can be used for creating new attributes and modifying existing ones. You can call methods inside other methods, use the results for calculations or just output messages. Knowing how methods and attributes interact can help you expand the functionality of your classes and make your programs very efficient.</p> 
   <p>We hope that you'll experiment with instance methods and use them in your projects!</p>
