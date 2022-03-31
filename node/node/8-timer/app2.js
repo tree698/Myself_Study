@@ -1,3 +1,5 @@
+// const { nextTick } = require('process');
+
 console.log('code 1');
 // 두번째
 setTimeout(() => {
