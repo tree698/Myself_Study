@@ -10,7 +10,7 @@ console.log(buf.toString());
 
 // create
 const buf2 = Buffer.alloc(2);
-const buf3 = Buffer.allocUnsafe(2); //fase
+const buf3 = Buffer.allocUnsafe(2); //fast, but uninitialise, so unsafe
 buf2[0] = 72;
 buf2[1] = 105;
 console.log(buf2);
