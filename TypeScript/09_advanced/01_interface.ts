@@ -17,7 +17,6 @@ const obj1: PositionType = {
 const obj2: PositionInterface = {
   x: 1,
   y: 2,
-  // z 구현 필요 => 아래에서 merge 했기 때문임
 };
 
 // ⭐️ class => 모두 적용 가능
@@ -29,27 +28,39 @@ class Test1 implements PositionType {
 class Test2 implements PositionInterface {
   x: number;
   y: number;
-  // z 구현 필요 => 아래에서 merge 했기 때문임
 }
 
-// ⭐️ extends => 모두 적용 가능
-interface ZPositionInterface extends PositionInterface {
-  z: number;
-}
-
-type ZPositionType = PositionType & { z: number };
-
-// ⚡️ only interface can be merged => 한번 더 정의
+// ⚡️ only interface can be merged
+// PositioinInterface에 Z를 추가했기 때문에 PositionInterface를 받는 object2, Test2는 Z를 구현해야 함
+// 현재, Z를 구현하지 않았기에 에러 상태임
 interface PositionInterface {
   z: number;
 }
+
+// ZPositionType은 x, y, z를 구현해야 함
+type ZPositionType = PositionType & { z: number };
+const obj3: ZPositionType = {
+  x: 1,
+  y: 1,
+  z: 0,
+};
+
+// Only interface can use 'extends'
+interface ZPositionInterface extends PositionInterface {
+  z: number;
+}
+const test: ZPositionInterface = {
+  x: 0,
+  y: 0,
+  z: 0,
+};
 
 // ⚡️ only type can => Type aliases can use computed properties
 type Person = {
   name: string;
   age: number;
 };
-type Name = Person['name'];
+type Name = Person['name']; //string type
 
 type NumberType = number;
 type Direction = 'left' | 'right';
