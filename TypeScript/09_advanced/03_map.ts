@@ -5,6 +5,7 @@
   };
 
   // optional
+  // [P in keyof T] === for..in
   type Optional<T> = {
     [P in keyof T]?: T[P];
   };

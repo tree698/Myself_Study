@@ -7,7 +7,7 @@
 
   const nav: Record<Page, PageInfo> = {
     home: { title: 'home' },
-    about: { title: 'about' },
+    about: { title: 'about' },ㅏ
     contact: { title: 'contact' },
   };
 
