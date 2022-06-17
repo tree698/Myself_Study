@@ -19,6 +19,7 @@ class A {
 const a = new A(4);
 a.memberfunction();
 
+// 노드에서 this는 module에 있는 export를 가리킴 vs. 브라우저는 global을 가리킴
 console.log('----global scope----');
 console.log(this); // {}
 console.log(this === module.exports); // true

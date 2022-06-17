@@ -2,7 +2,7 @@ const fs = require('fs');
 
 // fs API는 3가지 형태로 제공
 // rename(...., callback(error, data)) => 콜백함수, 비동기
-// try { renameSync(....) } catch(e) {} => 사용 X
+// try { renameSync(....) } catch(e) {}
 // promise.rename().then().catch(0)
 
 // 첫번째

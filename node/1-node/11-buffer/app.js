@@ -1,4 +1,4 @@
-// Fixed-size chuck of memory
+// Fixed-size chunk of memory
 // array of integers, byte of data
 
 const buf = Buffer.from('Hi');
