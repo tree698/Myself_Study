@@ -12,7 +12,7 @@ function calculate(x, y) {
   return result;
 }
 
-calculate(1, 7);
+calculate(1, 6);
 
 const stop = 4;
 console.log('...looping...');
