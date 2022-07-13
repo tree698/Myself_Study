@@ -16,12 +16,8 @@ const token = jwt.sign(
 // https://jwt.io/  => 토큰 해독
 // console.log(token);
 
-// jwt.verify(token, secretKey, (error, decoded) => {
-//   console.log(error, decoded);
-// });
-
 setTimeout(() => {
   jwt.verify(token, secretKey, (error, decoded) => {
     console.log(error, decoded);
   });
-}, 3000);
+}, 3000); //result: expired
